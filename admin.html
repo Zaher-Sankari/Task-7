@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <header>
+        <a href="./index.html">back to store</a>
+        <p>Admin Panel</p>
+    </header>
+    <main>
+        <section class="form_container">
+            <form id="productsForm">
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" required>
+                <label for="productPrice">Product Price:</label>
+                <input type="number" id="productPrice" step="any" required>
+                <label for="productType">Product Type:</label>
+                <select id="productType" required>
+                    <option value="" disabled selected>Choose Product Type:</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="clothes">Clothes</option>
+                    <option value="music">Music</option>
+                    <option value="games">Games</option>
+                    <option value="other">Other</option>
+                </select>
+                <label for="productImage">Product Image:</label>
+                <input type="url" id="productImage" required>
+                <button type="submit">Add</button>
+            </form>
+        </section>
+        <section>
+            <table id="productsTable">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Type</th>
+                        <th>Modify/Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                </table>
+        </section>
+    </main>
+    <script src="./assets/js/admin.js"></script>
+</body>
+</html>

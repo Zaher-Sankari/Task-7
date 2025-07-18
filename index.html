@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Store Page</title>
+</head>
+<body>
+    <header>
+        <p>Store page</p>
+        <a href="./admin.html">to Admin panel</a>
+    </header>
+    <main>
+        <div class="search_bar">
+            <input type="text" id="searchInput" placeholder="seacrh by name or type" />
+        </div>
+        <!--Slider-->
+        <div class="slider">
+            <div class="slides-container"></div>
+            <div class="dots"></div>
+        </div>
+        <!--End slider-->
+        <select name="" id="categoryFilter">
+            <option value="" selected>All Products</option>
+            <option value="electronics" >Electronics</option>
+            <option value="clothes" >Clothes</option>
+            <option value="music" >Music</option>
+            <option value="games" >Games</option>
+            <option value="other" >Other</option>
+        </select>
+        <select id="sortFilter">
+            <option value="" selected>All Categories</option>
+            <option value="asc">Asecending: Low to High</option>
+            <option value="desc">Descending: High to Low</option>
+        </select>
+        <div id="products-wrapper">
+        </div>
+    </main>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter',sans-serif;
+}
+header{
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    background-color: gray;
+}
+main{
+  margin: 15px 50px;;
+}
+.form_container{
+    max-width: 400px;
+    margin: 15px auto;
+    form{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+
+        input,select{
+            width: 100%;
+            height: 40px;
+            padding-left:10px ;
+        }
+        button{
+            padding: 8px 32px;
+            margin: 0 auto;
+            font-size: 16px;
+            border: none;
+            border-radius: 16px;
+            background-color: aqua;
+        }
+    }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  font-family: sans-serif;
+}
+
+thead {
+  background-color: #333;
+  color: #fff;
+    th {
+      padding: 12px;
+      text-align: center;
+      font-weight: bold;
+}
+}
+
+tbody td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+
+        .editBtn {
+          display: none;
+          margin-left: 6px;
+          font-size: 0.9rem;
+          cursor: pointer;
+        }
+}
+tbody td:nth-child(2){
+  max-width: 171px;
+}
+tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+tbody tr td img {
+  vertical-align: middle;
+  width:60px;
+  height:60px;
+  border-radius:8px;
+}
+
+button {
+  font-size: 14px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 8px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+button:first-child {
+  background-color: #2196F3;
+  color: white;
+}
+
+button:last-child {
+  background-color: #f44336;
+  color: white;
+}
+/* Store Page*/
+#products-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding-top: 20px;
+}
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    img{
+          width: 100% ;
+          height: 250px;
+          object-fit: cover;
+          
+    }
+    h3{
+      font-size: 24px;
+      padding-bottom: 8px;
+    }
+    p{
+      font-size: 16px;
+      padding-bottom: 8px;
+    }
+}
+.search_bar{
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  margin-block:24px;
+
+  input{
+    width: 100%;
+    padding: 16px;
+    font-size: 24px;
+  }
+}
+input::placeholder{
+  font-size: 24px;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 40px auto;
+  overflow: hidden;
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  padding: 20px 0;
+}
+
+/* Slides container */
+.slides-container {
+  display: flex;
+
+}
+
+/* Individual slide */
+.slide {
+  min-width: calc(100% / 3);
+  box-sizing: border-box;
+  padding: 0 10px;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Product card inside slide */
+.slide .product-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.slide .product-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.slide .product-card h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+}
+
+.slide .product-card p {
+  margin: 4px 0;
+  color: #555;
+}
+
+/* Navigation arrows */
+.slider .left,
+.slider .right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: orange;
+  color: white;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 50%;
+  user-select: none;
+  z-index: 10;
+}
+
+.slider .left {
+  left: 10px;
+}
+
+.slider .right {
+  right: 10px;
+}
+
+/* Dots */
+.slider .dots {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.slider .dots .dote {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  border-radius: 50%;
+  background-color: #bbb;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.slider .dots .dote.active {
+  background-color: orange;
+}
