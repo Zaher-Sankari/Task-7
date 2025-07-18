@@ -141,6 +141,7 @@ button:last-child {
 }
 input::placeholder{
   font-size: 24px;
+  color: rgb(175, 175, 175);
 }
 
 .slider {
@@ -224,7 +225,7 @@ input::placeholder{
   margin-top: 15px;
 }
 
-.slider .dots .dote {
+.slider .dots .dot {
   display: inline-block;
   width: 12px;
   height: 12px;
@@ -235,6 +236,6 @@ input::placeholder{
   transition: background-color 0.3s;
 }
 
-.slider .dots .dote.active {
+.slider .dots .dot.active {
   background-color: orange;
 }

@@ -1,26 +1,57 @@
 const productsWrapper = document.getElementById("products-wrapper");
+const sliderContainer = document.querySelector(".slides-container");
+const dots = document.querySelector(".slider .dots");
+let activeDot = 0;
 
 const products = JSON.parse(localStorage.getItem("products")) || []
 console.log(products);
 
-const displayItems = (products) =>{
-    productsWrapper.innerHTML = ''
+const displayItems = (products) => {
+    productsWrapper.innerHTML = '';
+    sliderContainer.innerHTML = '';
+    dots.innerHTML = '';
+    
     if (products.length === 0) {
         productsWrapper.innerHTML = `<p>There's no items to show just yet D:</p>`;
-        return
+        return;
     }
-    products.forEach(prodcut => {
-        const card = document.createElement("div")
-        card.className = ("product-card ")
+
+    products.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "product-card";
         card.innerHTML = `
-        <img src = "${prodcut.image}">
-        <h3>${prodcut.name}</h3>
-        <p>${prodcut.category}</p>
-        <p>${prodcut.price}$</p>
-        `
-        productsWrapper.append(card)
-    })
+            <img src="${product.image}">
+            <h3>${product.name}</h3>
+            <p>${product.category}</p>
+            <p>${product.price}$</p>
+        `;
+        productsWrapper.append(card);
+    });
+
+    products.forEach((product, index) => {
+        const slide = document.createElement("div");
+        slide.className = "slide";
+        slide.innerHTML = `
+            <div class="product-card">
+                <img src="${product.image}">
+                <h3>${product.name}</h3>
+                <p>${product.category}</p>
+                <p>${product.price}$</p>
+            </div>`;
+        sliderContainer.appendChild(slide);
+
+        if (index < products.length - 2) {
+            const dot = document.createElement("span");
+            dot.className = `dot ${index === 0 ? "active" : ""}`;
+            dot.id = `dot${index}`;
+            dot.onclick = () => sliderMovment(index);
+            dots.appendChild(dot);
+        }
+    });
+
+    activeDot = 0;
 }
+
 displayItems(products)
 
 //sort cards by price (ascending or descending sort)
@@ -70,39 +101,16 @@ categorySelect.addEventListener("change", () => {
     displayItems(filtered);
 });
 
-// slider
-const sliderContainer = document.querySelector(".slides-container");
-const dots = document.querySelector(".slider .dots");
-let activeDote = 0;
-
-products.forEach((product) => {
-    const slide = document.createElement("div");
-    slide.className = "slide";
-    slide.innerHTML = `
-        <div class="product-card">
-            <img src="${product.image}">
-            <h3>${product.name}</h3>
-            <p>${product.category}</p>
-            <p>${product.price}$</p>
-        </div>`;
-    sliderContainer.appendChild(slide);
-});
-
-const slides = document.querySelectorAll(".slider .slide");
-
-for (let i = 0; i < slides.length - 2; i++) {
-    dots.innerHTML += `<span class="dote ${(i === 0) ? "active" : ""}" onclick="sliderMovment(${i})" id="dote${i}"></span>`;
-}
-
 function sliderMovment(index) {
-    const dote = document.querySelector(`.slider #dote${index}`);
-    const dotes = document.querySelectorAll(`.slider .dots .dote`);
+    const dot = document.querySelector(`.slider #dot${index}`);
+    const dotes = document.querySelectorAll(`.slider .dots .dot`);
+    const slides = document.querySelectorAll(".slider .slide");
     dotes.forEach(dot => dot.classList.remove("active"));
-    dote.classList.add("active");
+    dot.classList.add("active");
 
     slides.forEach(slide => {
-    slide.style.transform = `translateX(calc(-${index * 100}%))`;
-});
+        slide.style.transform = `translateX(calc(-${index * 100}%))`;
+    });
 
-activeDote = index;
+    activeDot = index;
 }

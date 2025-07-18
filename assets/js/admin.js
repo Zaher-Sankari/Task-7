@@ -5,7 +5,24 @@ const productCategory = document.querySelector("#productType")
 const productImage = document.querySelector("#productImage")
 const tableBody = document.querySelector("#productsTable tbody");
 
-const initialItems = []
+const initialItems = [
+    { name: "Laptop", price: 899.99, category: "electronics", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRME6yxTqHoQH1UVWuuBdTKPKm1m7zCSd21Yw&s" },
+    { name: "Smartphone", price: 499.99, category: "electronics", image: "https://m.media-amazon.com/images/I/71s72QE+voL.jpg" },
+    { name: "Headphones", price: 149.99, category: "electronics", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmHcEKd3Nqr3Nm3_3hSezsH6Z4wtiriGK6TA&s" },
+    { name: "T-shirt", price: 19.99, category: "clothes", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlp-Ltk9qnyjnLsGhF5p4Tx5n8T83yCg9Zfg&s" },
+    { name: "Jeans", price: 39.99, category: "clothes", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy6MFdX1tf1GV22pvB58eNZdTFsfWoD11-SA&s" },
+    { name: "Jacket", price: 79.99, category: "clothes", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPyLiQRnRFOD7dWwAfjoCjco_4v2jxAqcWng&s" },   
+    { name: "Guitar", price: 299.99, category: "music", image: "https://img.kirstein.de/out/pictures/generated/product/1/2000_2000_75/db6665e09ac8ca1fc7bc3cd91f9d6cf0_1.jpg" },
+    { name: "Microphone", price: 89.99, category: "music", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDObzFHCXkt1XdWNG5Ois5TTksA9lHOAXFdA&s" },
+    { name: "Speaker", price: 129.99, category: "music", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYd55QDetQ4OZir82uxJPJ-9X_TINi49UpLA&s" },   
+    { name: "Board Game", price: 29.99, category: "games", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf0lHkL69iUMaF9LZTA8poT4n_xJR4ER9UeA&s" },
+    { name: "VR Headset", price: 199.99, category: "games", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSchDvvM-X3y8mA5la_c-lY0SnhIDoEm6amGg&s" },
+    { name: "Gamepad", price: 49.99, category: "games", image: "https://snakebyte.com/cdn/shop/files/01GAMEPADPROXBLACK.png?v=1691497844" },    
+    { name: "Water Bottle", price: 9.99, category: "other", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6W8hSpqi4IsrDts2orDQaSByw0PqYsCwjLQ&s" },
+    { name: "Backpack", price: 59.99, category: "other", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJkFZIXfWIXt7jIf5iFUGsH3J2ifvtIKyiEA&s" },
+    { name: "Notebook", price: 4.99, category: "other", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3Aq3Do_EAlUFeeqoh9CzjU8Rm93SxZQD03A&s" }
+]
+
 let products = JSON.parse(localStorage.getItem("products")) || []
 if (!Array.isArray(products)) {
     products = [];
@@ -40,7 +57,7 @@ const displayItems = () =>{
         const itemRow= document.createElement("tr")
         itemRow.innerHTML = `
         <td>
-        <img src="${product.image}";">
+        <img src="${product.image}">
         <button class="editBtn" onclick="editItem(${product.id},'image')">edit</button>
         </td>
         <td>${product.name}
