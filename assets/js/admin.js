@@ -12,7 +12,7 @@ const initialItems = [
     { name: "T-shirt", price: 19.99, category: "clothes", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlp-Ltk9qnyjnLsGhF5p4Tx5n8T83yCg9Zfg&s" },
     { name: "Jeans", price: 39.99, category: "clothes", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy6MFdX1tf1GV22pvB58eNZdTFsfWoD11-SA&s" },
     { name: "Jacket", price: 79.99, category: "clothes", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPyLiQRnRFOD7dWwAfjoCjco_4v2jxAqcWng&s" },   
-    { name: "Guitar", price: 299.99, category: "music", image: "https://img.kirstein.de/out/pictures/generated/product/1/2000_2000_75/db6665e09ac8ca1fc7bc3cd91f9d6cf0_1.jpg" },
+    { name: "Guitar", price: 299.99, category: "music", image: "https://images.musicstore.de/images/0960/gibson-les-paul-custom-ebony-gloss_1_GIT0048895-000.jpg" },
     { name: "Microphone", price: 89.99, category: "music", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDObzFHCXkt1XdWNG5Ois5TTksA9lHOAXFdA&s" },
     { name: "Speaker", price: 129.99, category: "music", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYd55QDetQ4OZir82uxJPJ-9X_TINi49UpLA&s" },   
     { name: "Board Game", price: 29.99, category: "games", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf0lHkL69iUMaF9LZTA8poT4n_xJR4ER9UeA&s" },
@@ -24,9 +24,7 @@ const initialItems = [
 ]
 
 let products = JSON.parse(localStorage.getItem("products")) || []
-if (!Array.isArray(products)) {
-    products = [];
-}
+if (!Array.isArray(products)) products = [];
 
 if (products.length === 0) {
     localStorage.setItem("products", JSON.stringify(initialItems));
@@ -52,6 +50,7 @@ form.addEventListener("submit", (e) => {
     lastId = addProducts.id;
     saveToLocalStorage()
     form.reset()
+    productName.focus();
     displayItems()
 })
 // to display items inside the table:
@@ -67,7 +66,7 @@ const displayItems = () =>{
         <td>${product.name}
         <button class="editBtn" onclick="editItem(${product.id},'name')">edit</button>
         </td>
-        <td>${product.price}$
+        <td>${parseFloat(product.price).toFixed(2)}$
         <button class="editBtn" onclick="editItem(${product.id},'price')">edit</button>
         </td>
         <td>${product.category}
