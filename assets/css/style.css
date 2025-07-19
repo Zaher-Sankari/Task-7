@@ -100,12 +100,14 @@ button:last-child {
   background-color: #f44336;
   color: white;
 }
-/* Store Page*/
+
+
+
 #products-wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
-    padding-top: 20px;
+    padding-top: 40px;
 }
 .product-card {
     border: 1px solid #ddd;
@@ -144,67 +146,15 @@ input::placeholder{
   color: rgb(175, 175, 175);
 }
 
-.slider {
-  position: relative;
-  width: 100%;
-  max-width: 90vw;
-  margin: 40px auto;
-  overflow: hidden;
-  background-color: #f8f8f8;
-  border-radius: 12px;
-  padding: 20px 0;
-}
-.slides-container {
-  display: flex;
-
-}
-.slide {
-  min-width: calc(100% / 4);
-  box-sizing: border-box;
-  padding: 0 10px;
-  transition: transform 0.5s ease-in-out;
-}
-
-.slide .product-card {
-  background-color: white;
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-.slide .product-card img {
-  width: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.slide .product-card h3 {
-  margin: 10px 0 5px;
-  font-size: 18px;
-}
-
-.slide .product-card p {
-  margin: 4px 0;
-  color: #555;
-}
-
-.slider .dots {
-  text-align: center;
-  margin-top: 15px;
-}
-
-.slider .dots .dot {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin: 0 6px;
+.carousel .arrow-right,
+.carousel .arrow-left{
+  background-color: red;
   border-radius: 50%;
-  background-color: #bbb;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  width: 50px;
+  height: 50px;
 }
+.carousel .dots {
+  background-color: gray;
+  bottom: -15% !important;
+} 
 
-.slider .dots .dot.active {
-  background-color: orange;
-}

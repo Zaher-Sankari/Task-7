@@ -1,16 +1,14 @@
 const productsWrapper = document.getElementById("products-wrapper");
-const sliderContainer = document.querySelector(".slides-container");
-const dots = document.querySelector(".slider .dots");
-let activeDot = 0;
+const carouselInner = document.querySelector("#productCarousel .carousel-inner");
+const carouselIndicators = document.querySelector("#productCarousel .carousel-indicators");
 
-const products = JSON.parse(localStorage.getItem("products")) || []
-console.log(products);
+const products = JSON.parse(localStorage.getItem("products")) || [];
 
 const displayItems = (products) => {
     productsWrapper.innerHTML = '';
-    sliderContainer.innerHTML = '';
-    dots.innerHTML = '';
-    
+    carouselInner.innerHTML = '';
+    carouselIndicators.innerHTML = '';
+
     if (products.length === 0) {
         productsWrapper.innerHTML = `<p>There's no items to show just yet D:</p>`;
         return;
@@ -29,30 +27,30 @@ const displayItems = (products) => {
     });
 
     products.forEach((product, index) => {
-        const slide = document.createElement("div");
-        slide.className = "slide";
-        slide.innerHTML = `
-            <div class="product-card">
-                <img src="${product.image}">
-                <h3>${product.name}</h3>
-                <p>${product.category}</p>
-                <p>${product.price}$</p>
-            </div>`;
-        sliderContainer.appendChild(slide);
+        const item = document.createElement("div");
+        item.className = "carousel-item" + (index === 0 ? " active" : "");
+        item.innerHTML = `
+            <div class="d-flex justify-content-center">
+                <div class="product-card text-center">
+                    <img src="${product.image}">
+                    <h3>${product.name}</h3>
+                    <p>${product.category}</p>
+                    <p>${product.price}$</p>
+                </div>
+            </div>
+        `;
+        carouselInner.append(item);
 
-        if (index < products.length - 3) {
-            const dot = document.createElement("span");
-            dot.className = `dot ${index === 0 ? "active" : ""}`;
-            dot.id = `dot${index}`;
-            dot.onclick = () => sliderMovment(index);
-            dots.appendChild(dot);
-        }
+        const indicator = document.createElement("button");
+        indicator.type = "button";
+        indicator.setAttribute("data-bs-target", "#productCarousel");
+        indicator.setAttribute("data-bs-slide-to", index);
+        if (index === 0) indicator.classList.add("active");
+        carouselIndicators.append(indicator);
     });
+};
 
-    activeDot = 0;
-}
-
-displayItems(products)
+displayItems(products);
 
 //sort cards by price (ascending or descending sort)
 const sortPrice = document.querySelector("#sortFilter")
@@ -87,7 +85,7 @@ searchInput.addEventListener("keyup", () =>{
 })
 displayItems(products);
 
-//filter by category - not dynamic
+//filter by category
 const categorySelect = document.querySelector("#categoryFilter");
 
 categorySelect.addEventListener("change", () => {
@@ -97,17 +95,3 @@ categorySelect.addEventListener("change", () => {
     const filtered = selectedCategory? products.filter(p => p.category === selectedCategory): products;
     displayItems(filtered);
 });
-
-function sliderMovment(index) {
-    const dot = document.querySelector(`.slider #dot${index}`);
-    const dotes = document.querySelectorAll(`.slider .dots .dot`);
-    const slides = document.querySelectorAll(".slider .slide");
-    dotes.forEach(dot => dot.classList.remove("active"));
-    dot.classList.add("active");
-
-    slides.forEach(slide => {
-        slide.style.transform = `translateX(calc(-${index * 100}%))`;
-    });
-
-    activeDot = index;
-}
