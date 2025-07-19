@@ -147,29 +147,24 @@ input::placeholder{
 .slider {
   position: relative;
   width: 100%;
-  max-width: 960px;
+  max-width: 90vw;
   margin: 40px auto;
   overflow: hidden;
   background-color: #f8f8f8;
   border-radius: 12px;
   padding: 20px 0;
 }
-
-/* Slides container */
 .slides-container {
   display: flex;
 
 }
-
-/* Individual slide */
 .slide {
-  min-width: calc(100% / 3);
+  min-width: calc(100% / 4);
   box-sizing: border-box;
   padding: 0 10px;
-    transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
 
-/* Product card inside slide */
 .slide .product-card {
   background-color: white;
   border-radius: 10px;
@@ -180,7 +175,6 @@ input::placeholder{
 
 .slide .product-card img {
   width: 100%;
-  height: 160px;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -195,31 +189,6 @@ input::placeholder{
   color: #555;
 }
 
-/* Navigation arrows */
-.slider .left,
-.slider .right {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: orange;
-  color: white;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-size: 20px;
-  border-radius: 50%;
-  user-select: none;
-  z-index: 10;
-}
-
-.slider .left {
-  left: 10px;
-}
-
-.slider .right {
-  right: 10px;
-}
-
-/* Dots */
 .slider .dots {
   text-align: center;
   margin-top: 15px;

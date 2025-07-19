@@ -40,7 +40,7 @@ const displayItems = (products) => {
             </div>`;
         sliderContainer.appendChild(slide);
 
-        if (index < products.length - 2) {
+        if (index < products.length - 3) {
             const dot = document.createElement("span");
             dot.className = `dot ${index === 0 ? "active" : ""}`;
             dot.id = `dot${index}`;
@@ -94,10 +94,7 @@ categorySelect.addEventListener("change", () => {
     const selectedCategory = categorySelect.value;
     const products = JSON.parse(localStorage.getItem("products")) || [];
 
-    const filtered = selectedCategory
-    ? products.filter(p => p.category === selectedCategory)
-    : products;
-
+    const filtered = selectedCategory? products.filter(p => p.category === selectedCategory): products;
     displayItems(filtered);
 });
 

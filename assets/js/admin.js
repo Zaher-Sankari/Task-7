@@ -35,6 +35,10 @@ if (products.length === 0) {
 
 let lastId = products[products.length - 1]?.id || 0;
 
+function saveToLocalStorage(){
+    localStorage.setItem("products",JSON.stringify(products))
+}
+
 form.addEventListener("submit", (e) => {
     e.preventDefault()
     const addProducts = {
@@ -46,7 +50,7 @@ form.addEventListener("submit", (e) => {
     };
     products.push(addProducts);
     lastId = addProducts.id;
-    localStorage.setItem("products",JSON.stringify(products))
+    saveToLocalStorage()
     form.reset()
     displayItems()
 })
@@ -82,7 +86,7 @@ const deleteItem = (id) => {
     const confirmation = confirm ("Are you sure you want to delete this item?")
     if(confirmation){
         products = products.filter(product => product.id !== id);
-        localStorage.setItem("products", JSON.stringify(products));
+        saveToLocalStorage()
     }
     displayItems();
 }
@@ -101,7 +105,7 @@ const editItem = (id, field) => {
     const productToEdit = products.find(product => product.id === id);
     if (!productToEdit) return;
 
-    const updateItem = prompt(`Enter a new value for ${field}:`);
+    const updateItem = prompt(`Enter a new value for ${field}:`,productToEdit[field]);
     if (!updateItem) return;
 
     switch (field) {
@@ -120,7 +124,6 @@ const editItem = (id, field) => {
         default:
             return;
     }
-
-    localStorage.setItem("products", JSON.stringify(products));
+    saveToLocalStorage()
     displayItems();
 };
