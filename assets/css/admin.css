@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+a:hover{
+    color: lightgray;
+}
+header {
+  background-color: #222;
+  color: white;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main {
+  margin: 20px 40px;
+}
+
+.form_container {
+  max-width: 500px;
+  margin: 30px auto;
+}
+.form_container form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.form_container input,
+.form_container select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+.form_container button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  border: none;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: .3s ease all;
+}
+.form_container button:hover {
+  background-color: #218838;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+thead {
+  background-color: #444;
+  color: white;
+}
+thead th {
+  padding: 16px;
+  text-align: center;
+}
+tbody td {
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+  position: relative;
+}
+tbody tr:hover {
+  background-color: #f2f2f2;
+}
+tbody tr td img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+button {
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+button:first-child {
+  background-color: #007bff;
+  color: white;
+}
+button:last-child {
+  background-color: #dc3545;
+  color: white;
+}
+tbody td .editBtn {
+  display: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-left: 8px;
+}
