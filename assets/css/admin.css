@@ -76,11 +76,17 @@ tbody td {
 tbody tr:hover {
   background-color: #f2f2f2;
 }
-tbody tr td img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 8px;
+tbody tr td:has(img) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img{
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+
+  }
 }
 
 button {
