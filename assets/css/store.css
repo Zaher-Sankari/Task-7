@@ -88,26 +88,3 @@ input::placeholder {
     align-items: center;
     justify-content: center;
 }
-
-.carousel .dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 20px;
-    bottom:-20%;
-    background-color: rgb(167, 167, 167);
-}
-.carousel .dots .dot {
-    width: 12px ;
-    height: 12px ;
-    border-radius: 50% ;
-    background-color: #ccc !important;
-    cursor: pointer;
-}
-.carousel-indicators [data-bs-target]{
-    background-color: black;
-
-}
-.carousel-indicators .active {
-    background-color: blue !important;
-}
