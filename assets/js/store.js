@@ -7,7 +7,6 @@ const products = JSON.parse(localStorage.getItem("products")) || [];
 const displayItems = (products) => {
     productsWrapper.innerHTML = '';
     carouselInner.innerHTML = '';
-    carouselIndicators.innerHTML = '';
 
     if (products.length === 0) {
         productsWrapper.innerHTML = `<p>There's no items to show just yet D:</p>`;
@@ -40,13 +39,6 @@ const displayItems = (products) => {
             </div>
         `;
         carouselInner.append(item);
-
-        const indicator = document.createElement("button");
-        indicator.type = "button";
-        indicator.setAttribute("data-bs-target", "#productCarousel");
-        indicator.setAttribute("data-bs-slide-to", index);
-        if (index === 0) indicator.classList.add("active");
-        carouselIndicators.append(indicator);
     });
 };
 
@@ -88,17 +80,17 @@ displayItems(products);
 //filter by category
 const categorySelect = document.querySelector("#categoryFilter");
 const dynamicCategoryFilter = () => {
-  const products = JSON.parse(localStorage.getItem("products")) || [];
+const products = JSON.parse(localStorage.getItem("products")) || [];
     const filteredCategories = []
     products.forEach(product => {
         if (!filteredCategories.includes(product.category)) {
             filteredCategories.push(product.category);
     }
-      });
-      filteredCategories.forEach(category => {
-          const option = `<option value="${category}">${category}</option>`;
-          categorySelect.innerHTML += option;
-      })
+    });
+    filteredCategories.forEach(category => {
+        const option = `<option value="${category}">${category}</option>`;
+        categorySelect.innerHTML += option;
+    })
 };
 categorySelect.addEventListener("change", () => {
     const selectedCategory = categorySelect.value;
