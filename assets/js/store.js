@@ -87,11 +87,23 @@ displayItems(products);
 
 //filter by category
 const categorySelect = document.querySelector("#categoryFilter");
-
+const dynamicCategoryFilter = () => {
+  const products = JSON.parse(localStorage.getItem("products")) || [];
+    const filteredCategories = []
+    products.forEach(product => {
+        if (!filteredCategories.includes(product.category)) {
+            filteredCategories.push(product.category);
+    }
+      });
+      filteredCategories.forEach(category => {
+          const option = `<option value="${category}">${category}</option>`;
+          categorySelect.innerHTML += option;
+      })
+};
 categorySelect.addEventListener("change", () => {
     const selectedCategory = categorySelect.value;
     const products = JSON.parse(localStorage.getItem("products")) || [];
-
     const filtered = selectedCategory? products.filter(p => p.category === selectedCategory): products;
     displayItems(filtered);
 });
+dynamicCategoryFilter()
